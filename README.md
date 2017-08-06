@@ -16,8 +16,9 @@ mescroll.endErr() 默认隐藏上拉加载中的布局
 1.PC端可自定义滚动条样式<br/>
 2.可配置onScroll来监听滚动条的位置<br/>
 3.主动触发下拉刷新mescroll.triggerDownScroll()显示下拉布局加入动画效果过渡<br/>
-4.重置列表mescroll.resetUpScroll(isShowLoading),新加isShowLoading参数<br/>
- isShowLoading 是否显示下拉或者上拉的进度布局; 1.不传参或true,则显示进度布局; 2.false则不显示(常用于切换菜单时静默更新列表数据);
+4.重置列表mescroll.resetUpScroll(isShowLoading)新加isShowLoading参数: 是否显示下拉或者上拉的进度布局<br/>
+ (1.不传参或true,则显示进度布局;<br/>
+ (2.传false,则不显示;常用于切换菜单时静默更新列表数据;
 <br/>
 <br/>
 
