@@ -7,7 +7,7 @@
 <br/>
 
 ### v 1.1.3 --- 2017-08-06 
-1.mescroll.endErr() 默认隐藏上拉加载中的布局
+1.mescroll.endErr() 默认隐藏上拉加载中的布局<br/>
 2.mescroll.resetUpScroll() 重置时间为null,而非原来的空串
 <br/>
 <br/>
