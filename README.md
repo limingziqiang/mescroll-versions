@@ -6,6 +6,12 @@
 ## mescroll所有版本:
 <br/>
 
+### v 1.1.6 --- 2017-08-27
+1.下拉刷新加入minAngle参数:向下滑动最少偏移的角度,取值区间  [0,90];<br/>
+默认45度,即向下滑动的角度大于45度则触发下拉;而小于45度,将不触发下拉,避免与左右滑动的轮播等组件冲突;
+<br/>
+<br/>
+
 ### v 1.1.5 --- 2017-08-15 
 1.取消down.resetShowDownScroll的配置项,少用且不易理解,取而代之的方法是mescroll.resetUpScroll(true);<br/>
 2.简化mescroll.resetUpScroll(isShowLoading)重置列表的用法, 参数isShowLoading: 是否显示进度布局<br/>
