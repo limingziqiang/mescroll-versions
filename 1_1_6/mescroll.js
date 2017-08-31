@@ -442,6 +442,7 @@ MeScroll.prototype.resetUpScroll = function(isShowLoading) {
 		page.time = null; //重置时间为空
 		if(!this.isDownScrolling&&isShowLoading!=false) {//如果不是下拉刷新触发的resetUpScroll并且不配置列表静默更新,则显示进度;
 			if(isShowLoading==null) {
+				this.removeEmpty(); //移除空布局
 				this.clearDataList();//先清空列表数据,才能显示到上拉加载的布局
 				this.showUpScroll(); //不传参,默认显示上拉加载的进度布局
 			} else {
