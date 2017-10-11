@@ -6,6 +6,71 @@
 ## mescroll所有版本:
 <br/>
 
+### v 1.2.1 --- 2017-10-10 
+
+##### 一.新增配置:  
+
+1.down的配置新增bottomOffset : 当手指touchmove位置在距离body底部20px范围内的时候结束上拉刷新,避免Webview嵌套导致touchend事件不执行  
+  
+  
+2.up的配置新增onScroll : function(mescroll, y, isUp){ }; //y为列表当前滚动条的位置; isUp=true向上滑,isUp=false向下滑  
+  
+  
+##### 二.调整mescroll.endSuccess  
+联网成功的回调,隐藏下拉刷新和上拉加载的状态;  
+mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+
+//方法1: 后台接口有返回列表的总页数 totalPage  
+mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+
+//方法2: 后台接口有返回列表的总数据量 totalSize  
+mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
+
+//方法3: 您有其他方式知道是否有下一页 hasNext  
+mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+
+//方法4 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.  
+//如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据,如果传了hasNext,则翻到第二页即可显示无更多数据.  
+mescroll.endSuccess(curPageData.length); //1.2.0以前版本用的都是这个方法,存在上述小问题,请升级到1.2.1吧		
+
+
+##### 三.新增方法:  
+					
+1.销毁mescroll   
+mescroll.destroy();  
+
+2.获取滚动条的位置y  
+var y = mescroll.getScrollTop();  
+
+3.获取body的高度  
+var h = mescroll.getBodyHeight();
+
+4.获取滚动容器的高度  
+var h= mescroll.getClientHeight();
+
+5.获取滚动内容的高度  
+var h= mescroll.getScrollHeight();
+
+
+##### 四.其他
+1.初始化mescroll检查AMD,CMD,Node环境  
+
+2.不启用上拉,则不配置up即可,无需像以前版本必须配置 up:{use:false}  
+
+3.优化硬件加速的逻辑,修复iOS下拉刷新有时闪白屏或者抖动的问题  
+
+4.body默认高度100%,并且可配置body为滚动区域,简化mescroll初始化的写法.  
+参考案例: http://www.mescroll.com/preview.html?name=list-mescroll-body
+<br/>
+<br/>
+
+### v 1.2.0 --- 2017-10-02 
+### v 1.1.8 --- 2017-09-16 
+### v 1.1.7 --- 2017-09-01 
+个人内测版,略过~
+<br/>
+<br/>
+
 ### v 1.1.6 --- 2017-08-27
 down的配置新增 minAngle : 触发下拉最少要偏移的角度(滑动的轨迹与水平线的锐角值),取值区间  [0,90];<br/>
 默认45度,即向下滑动的角度大于45度(方位角为45°-145°及225°-315°)则触发下拉;而小于45度,将不触发下拉,避免与左右滑动的轮播等组件冲突;<br/>
